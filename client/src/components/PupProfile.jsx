@@ -72,51 +72,12 @@ class PupProfile extends Component {
                 }} >
                 Edit Pup Info
               </button>
-              <button
-                onClick={(ev) => {
-                  ev.preventDefault();
-                  const dogState = this.state;
-                  this.props.newGrade(dogState)
-                }} >
-                Update Grades</button>
-
-
-
-
-              {/* <form
-                onSubmit={this.state}>
-                
-                <button
-                className={this.state.deleteVisablity}
-                  name="byedoggy"
-                  onChange={this.handleChange}
-                  value={this.state.deleteVisablity}
-                  onClick={(ev) => {
-                    ev.preventDefault();
-                  }}
-                  > delete </button> */}
-                 
-                              
-                <button onClick={(ev) => {
-                  ev.preventDefault();
-                  const dog = this.state;
-                  this.props.handleDeleteDog(dog)
-                }} > delete
-                </button>
-
-              {/* </form>
-              <div className={this.state.doggyVisability}>
-              </div> */}
-
-
-              <div className="grid-cell">
-                <p>Leash Training: {this.state.leash_training ? "✔️" : "💩"}</p>
-                <p>Leave It: {this.state.leave_it ? "✔️" : "💩"}</p>
-                <p>Potty Training: {this.state.potty_training ? "✔️" : "💩"}</p>
-                <p>Quiet: {this.state.quiet ? "✔️" : "💩"}</p>
-                <p>Sit: {this.state.sit ? "✔️" : "💩"}</p>
-                <p>Stay: {this.state.stay ? "✔️" : "💩"}</p>
-              </div>
+              <button onClick={(ev) => {
+                ev.preventDefault();
+                const dog = this.state;
+                this.props.handleDeleteDog(dog)
+              }} >
+                Delete Profile</button>
             </div>
           </div >
         </div>

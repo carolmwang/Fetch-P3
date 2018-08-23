@@ -42,7 +42,7 @@ module.exports = {
       .catch(next);
   },
 
-  // update dog
+  // update dog all the information that the puppy has
   updateDog(req, res, next) {
     const data = {
       id: req.body.id,
@@ -62,7 +62,7 @@ module.exports = {
       .catch(next);
   },
 
-  // delete dog from DB
+  // delete the poor doggy from the DB
   deleteDog(req, res, next) {
     dogModel.deleteDog(req.params.id)
       .then(() => {
