@@ -36,6 +36,7 @@ class UpdateDog extends Component {
     }
 
     handleChange(e) {
+        e.stopPropigation();
         e.preventDefault();
         const { name, value } = e.target;
         this.setState({

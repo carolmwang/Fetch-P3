@@ -31,6 +31,7 @@ class App extends Component {
       selectedDog: '',
       // selectedGrade: '',
       currentView: 'All Dogs',
+      currentPup: null
     }
     // this.fetchOne = this.fetchOne.bind(this);
     this.createDog = this.createDog.bind(this);
@@ -123,7 +124,7 @@ class App extends Component {
       })
   };
 
-  // delete dog function
+  // delete dog function brings back to the landing page
 
   handleDeleteDog(dog) {
     deleteDog(dog)

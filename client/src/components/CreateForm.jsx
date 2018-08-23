@@ -22,6 +22,7 @@ handleSubmit(ev) {
 };
 handleChange(ev) {
     ev.preventDefault();
+    ev.stopPropagation();
     const { name, value } = ev.target;
     this.setState({
         [name]: value,
