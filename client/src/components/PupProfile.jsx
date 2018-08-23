@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DogsIndex from './DogsIndex'
+// import DogsIndex from './DogsIndex'
 
 // PupProfile component passing props to state
 class PupProfile extends Component {
@@ -21,28 +21,29 @@ class PupProfile extends Component {
       quiet: dogGrade.quiet,
       sit: dogGrade.sit,
       stay: dogGrade.stay,
-      byeDoggy: '',
-      deleteVisablity: "pageHide"
+      // byeDoggy: '',
+      // deleteVisablity: "pageHide"
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
-  handleChange(e) {
-    this.setState({
-      byeDoggy: e.target.value
-    })
-  }
+//   handleChange(e) {
+//     this.setState({
+//       // byeDoggy: e.target.value,
+//       debugger;
+//       deleteVisablity: "showAlert"
+//     })
+//   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onSubmit(this.state);
- ({
-      deleteVisablity: "displayAlert"
-    })
+//   handleSubmit(e) {
+//     e.preventDefault();
+//   (this.state);
+//  ({
+//     })
      
-    }
+//     }
 
 
   //Render a dog's profile
@@ -82,15 +83,20 @@ class PupProfile extends Component {
 
 
 
-              <form
-                onSubmit={this.handleSubmit}>
-                <input
-                text="text"
+              {/* <form
+                onSubmit={this.state}>
+                
+                <button
+                className={this.state.deleteVisablity}
                   name="byedoggy"
                   onChange={this.handleChange}
-                  value={this.state.messageBox}
+                  value={this.state.deleteVisablity}
+                  onClick={(ev) => {
+                    ev.preventDefault();
+                  }}
+                  > delete </button> */}
                  
-                />                  
+                              
                 <button onClick={(ev) => {
                   ev.preventDefault();
                   const dog = this.state;
@@ -98,9 +104,9 @@ class PupProfile extends Component {
                 }} > delete
                 </button>
 
-              </form>
+              {/* </form>
               <div className={this.state.doggyVisability}>
-              </div>
+              </div> */}
 
 
               <div className="grid-cell">
