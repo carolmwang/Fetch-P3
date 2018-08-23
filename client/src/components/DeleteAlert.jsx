@@ -22,34 +22,42 @@
 //     handleSubmit(e) {
 //         e.preventDefault();
 //         deleteDog(dog)
-//             .then(data => fetchDogs(dog))
-//             .then(data => {
-//                 this.setState({
-//                     currentView: 'All Dogs',
-//                     dogs: data.dogs,
+//             .then(() => resp.json())
+//             .then(() => this.setState({
+//                     doggyVisability: "Alert Display"
 //                 })
-            
-            
-
-
-//     render() {
-//         return (
-//             <main>
-//                 <form
-//                     onSubmit={this.handleSubmit}>
-//                     <input
-//                         name="byedoggy"
-//                         value={this.state.byeDoggy}
-//                         onChange={this.handleChange}
-//                     />
-//                     <button
-//                         type="confirm">
-
-//                     </button>
-//                         </form>
-//             </main>
-//                 )
-//             }
+//         }
         
 
-// export default DeleteAlert;
+
+//         render() {
+//             return (
+//                 <main>
+//                     <form
+//                         onSubmit={this.handleSubmit}>
+//                         <input
+//                             name="byedoggy"
+//                             value={this.state.messag}
+//                             onChange={this.handleChange}
+//                         />
+
+//                         <button onClick={(ev) => {
+//                             ev.preventDefault();
+//                             const dog = this.state;
+//                             this.props.handleDeleteDog(dog)
+//                           }} >
+
+                          
+//                         <button
+//                             type="confirm">
+//                             confirm</button>
+//                     </form>
+//                     <div className={this.state.doggyVisability}>
+//                     </div>
+
+//                 </main>
+//             )
+//         }
+
+//     }
+//         export default DeleteAlert

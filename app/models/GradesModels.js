@@ -1,3 +1,4 @@
+// require db from config
 const { db } = require('../config/conn');
 
 module.exports = {
@@ -30,11 +31,12 @@ module.exports = {
       leash_training = $/leash_training/,
       sit = $/sit/,
       quiet = $/quiet/,
-      leave_it = $/leave_it/,
+      leave_it = $/leave_it/
       WHERE dogs_id = $/dogs_id/
       RETURNING *`, data);
   },
 
+  // add new grade for new dog
   newGrade(data) {
     return db.one(`
     INSERT INTO gradebook

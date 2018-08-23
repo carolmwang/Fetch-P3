@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-// maybe needs a change
-import { fetchOneGrade, updateDoggy, deleteDog, updateGrades } from '../services/api';
-import UpdateGrades from './UpdateGrades';
-// import DeleteButton from './Deletebutton';
-import UpdateDog from './UpdateDog';
+import DogsIndex from './DogsIndex'
 
-
-
+// PupProfile component passing props to state
 class PupProfile extends Component {
   constructor(props) {
     super(props);
-    const { dogs, dog, dogGrade } = props;
+    const { dog, dogGrade } = props;
     this.state = {
       id: dog.id,
       owner: dog.owner,
@@ -20,99 +15,111 @@ class PupProfile extends Component {
       age: dog.age,
       picture: dog.picture,
       dogs_id: dog.id,
+      leash_training: dogGrade.leash_training,
+      leave_it: dogGrade.leave_it,
+      potty_training: dogGrade.potty_training,
+      quiet: dogGrade.quiet,
+      sit: dogGrade.sit,
+      stay: dogGrade.stay,
+      byeDoggy: '',
+      deleteVisablity: "pageHide"
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
-      leash_training: false,
-      leave_it: false,
-      potty_training: false,
-      quiet: false,
-      sit: false,
-      stay: false,
+  }
+
+  handleChange(e) {
+    this.setState({
+      byeDoggy: e.target.value
+    })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+ ({
+      deleteVisablity: "displayAlert"
+    })
+     
     }
 
-    // this.handleDeleteClick = this.handleDeleteClick.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-  }
 
-
-
-  // handle change
-  handleChange(e) {
-
-  }
-  // handle submit
-
-  // handle delete 
-  // handleDeleteClick() {
-  //   deleteDog()
-  //     .then(res => {
-  //       this.fetchOneDog();
-  //     })
-  // }
-
+  //Render a dog's profile
+  //Display dog's information, picture, and dog's grades.
   render() {
     return (
-      <div>
-        <h2>{this.state.name}</h2>
-        {/* <UpdateGrades />
-        <DeleteButton dogs={this.state.dogs} handleDeleteClick={this.handleDeleteClick} /> */}
-        <img src={this.state.picture} alt={'🐾 Sorry, No Image 🐾'} height="200" width="200" className="pupperPic" />
-        <h2>{this.state.name}</h2>
+      <div className="profilePage">
+        <div className="PPgrid-container">
+          {/* <h2>{this.state.name}</h2> */}
+          <div className="grid-cell">
+            <p>Owner: {this.state.owner}</p><br />
+            <p>Breed: {this.state.breed}</p><br />
+            <p>Size: {this.state.size}</p><br />
+            <p>Age: {this.state.age}</p><br />
+            <p>Id: {this.state.dogs_id}</p>
+          </div>
+          <div className="grid-cell center-cell">
+            <p className="profilename">{this.state.name}</p>
+            <img src={this.state.picture} alt={'Sorry, No Image 🐾'} height="300" width="300" className="pupperPic" />
+            <div className="PPbuttons">
+              <button
+                onClick={(ev) => {
+                  ev.preventDefault();
+                  const dogState = this.state;
+                  this.props.editDog(dogState)
+                }} >
+                Edit Pup Info
+              </button>
+              <button
+                onClick={(ev) => {
+                  ev.preventDefault();
+                  const dogState = this.state;
+                  this.props.newGrade(dogState)
+                }} >
+                Update Grades</button>
 
-        {/* set up props insead of state since it already is called from state from app.jsx */}
-        <p>Owner: {this.props.dog.owner}</p>
-        <p>Breed: {this.props.dog.breed}</p>
-        <p>Size: {this.props.dog.size}</p>
-        <p>Age: {this.props.dog.age}</p>
-        <p>Id: {this.props.dog.id}</p>
-        <p>Leash Training: {this.state.leash_training ? "True" : "False"}</p>
-        <p>Leave It: {this.state.leave_it ? "True" : "False"}</p>
-        <p>Potty Training: {this.state.potty_training ? "True" : "False"}</p>
-        <p>Quiet: {this.state.quiet ? "True" : "False"}</p>
-        <p>Sit: {this.state.sit ? "True" : "False"}</p>
-        <p>Stay: {this.state.stay ? "True" : "False"}</p>
-        <button
-          onClick={(ev) => {
-            ev.preventDefault();
-            const dogState = this.state;
-            this.props.editDog(dogState)
-          }} >
-          Edit Dog
-            </button>
-        <button
-          onClick={(ev) => {
-            ev.preventDefault();
-            const dogState = this.state;
-            this.props.newGrade(dogState)
-          }} >
-          New Gradebook
 
-        <button onClick={(ev) => {
-          ev.preventDefault();
-          const dog = this.dog;
-          this.props.handleDeleteDog(dog);
-        }} >
 
-          </button>
-        {/* <button DeleteAlert > delete</button> */}
-        {/* <button className="confirm"
-        onClick={ev => this.onClick(ev)}> confirm </button> */}
 
-        
-          {/* confirm </button>
-          Delete Button  */}
-</button>
+              <form
+                onSubmit={this.handleSubmit}>
+                <input
+                text="text"
+                  name="byedoggy"
+                  onChange={this.handleChange}
+                  value={this.state.messageBox}
+                 
+                />                  
+                <button onClick={(ev) => {
+                  ev.preventDefault();
+                  const dog = this.state;
+                  this.props.handleDeleteDog(dog)
+                }} > delete
+                </button>
 
+              </form>
+              <div className={this.state.doggyVisability}>
+              </div>
+
+
+              <div className="grid-cell">
+                <p>Leash Training: {this.state.leash_training ? "✔️" : "💩"}</p>
+                <p>Leave It: {this.state.leave_it ? "✔️" : "💩"}</p>
+                <p>Potty Training: {this.state.potty_training ? "✔️" : "💩"}</p>
+                <p>Quiet: {this.state.quiet ? "✔️" : "💩"}</p>
+                <p>Sit: {this.state.sit ? "✔️" : "💩"}</p>
+                <p>Stay: {this.state.stay ? "✔️" : "💩"}</p>
+              </div>
+            </div>
+          </div >
+        </div>
       </div>
-
-
-
-      // render pup profile
-      // render forms (update)
-      // render forms (gradebook)
     );
   }
 
 }
+
 
 
 export default PupProfile;
